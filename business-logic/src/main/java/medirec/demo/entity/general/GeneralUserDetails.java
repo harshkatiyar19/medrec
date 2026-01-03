@@ -1,11 +1,19 @@
 package medirec.demo.entity.general;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import medirec.demo.enums.BloodGroup;
 import medirec.demo.enums.Gender;
 
 import java.time.LocalDate;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public abstract class GeneralUserDetails {
     @Column(name="username",length = 100,unique = true,nullable = false)

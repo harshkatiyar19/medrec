@@ -1,11 +1,17 @@
 package medirec.demo.entity.general;
 
 import jakarta.persistence.*;
-import medirec.demo.enums.AddressType;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name="address")
 @SequenceGenerator(
         name="seqAddress",
@@ -51,8 +57,5 @@ public class Address{
     @Column(name="map_url",nullable = false)
     private String mapUrl;
 
-    @Column(name="address_type",nullable = false)
-    @Enumerated(EnumType.STRING)
-    private AddressType addressType;
 }
 

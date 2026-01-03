@@ -38,7 +38,7 @@ public class Doctor extends GeneralUserDetails {
     @OneToMany(mappedBy = "doctor",fetch = FetchType.LAZY)
     private List<Qualifications> qualificationsList;
 
-    @OneToMany(mappedBy = "department",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "doctor",fetch = FetchType.LAZY)
     private List<DrDepartments> depatmentsList;
 }
 

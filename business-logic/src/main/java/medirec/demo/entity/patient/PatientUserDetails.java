@@ -1,10 +1,19 @@
 package medirec.demo.entity.patient;
 
 import jakarta.persistence.*;
+import lombok.*;
 import medirec.demo.entity.general.Address;
 import medirec.demo.entity.general.GeneralUserDetails;
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode(onlyExplicitlyIncluded = true,
+        callSuper = false)
 @Table(name="patient_details")
 @SequenceGenerator(
         name="seqPatientDetails",
@@ -13,22 +22,42 @@ import medirec.demo.entity.general.GeneralUserDetails;
 )
 public class PatientUserDetails extends GeneralUserDetails {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE
-            ,generator = "seqPatientDetails")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,
+            generator = "seqPatientDetails")
     @Column(name="id")
     //14-digit id
     private long id;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="permanent_address_id",nullable = false,referencedColumnName = "address_id")
+    @ManyToOne(cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
+    @JoinColumn(name="permanent_address_id",
+            nullable = false,
+            referencedColumnName = "address_id")
     private Address permanentAddress;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="current_address_id",nullable = false,referencedColumnName = "address_id")
+    @ManyToOne(cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
+    @JoinColumn(name="current_address_id",
+            nullable = false,
+            referencedColumnName = "address_id")
     private Address currentAddress;
 
 
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="emergency_contact_id",nullable = false,referencedColumnName = "emergency_contact_id")
+    @OneToOne(cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
+    @JoinColumn(name="emergency_contact_id",
+            nullable = false,
+            referencedColumnName = "emergency_contact_id")
     private EmergencyContact emergencyContact;
+
+    @OneToMany(mappedBy = "patientUserDetails",
+            fetch = FetchType.LAZY)
+    private List<Reports> reportsList;
+
+    @OneToMany(mappedBy = "patientUserDetails",
+            fetch = FetchType.LAZY)
+    private List<DrVisits> drVisitsList;
 }
