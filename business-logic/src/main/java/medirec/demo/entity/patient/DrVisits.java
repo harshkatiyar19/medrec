@@ -3,6 +3,8 @@ package medirec.demo.entity.patient;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -32,6 +34,7 @@ public class DrVisits extends VisitBase{
     @Column(name ="tests",nullable = false)
     private String tests;
 
-    @Column(name ="meds",nullable = false)
-    private String meds;
+    @OneToMany(mappedBy = "drVisits",
+            fetch = FetchType.LAZY)
+    private List<Medications> meds;
 }

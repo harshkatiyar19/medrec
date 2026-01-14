@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: "MediRec"
+  datasource:
+    url: jdbc:postgresql://localhost:5432/spreezy
+    username: spreezy_owner
+    password: spreezyOwner@123
+    driverClassName: org.postgresql.Driver
+  liquibase:
+    enabled: false
+    drop-first: false
+    change-log: classpath:db.changelog/spreezy-master-changelog.xml
+    default-schema: spreezy
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        default_schema: spreezy
