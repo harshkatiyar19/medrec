@@ -1,13 +1,24 @@
 package medirec.demo.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum BloodGroup{
-    O_NEGATIVE,
-    O_POSITIVE,
-    A_NEGATIVE,
-    A_POSITIVE,
-    B_NEGATIVE,
-    B_POSITIVE,
-    AB_NEGATIVE,
-    AB_POSITIVE;
+    O_NEGATIVE("O-"),
+    O_POSITIVE("O+"),
+    A_NEGATIVE("A-"),
+    A_POSITIVE("A+"),
+    B_NEGATIVE("B-"),
+    B_POSITIVE("B+"),
+    AB_NEGATIVE("AB-"),
+    AB_POSITIVE("AB+");
+
+
+    private final String code;
+
+    BloodGroup(String code) {
+        this.code=code;
+    }
+
 }
 
