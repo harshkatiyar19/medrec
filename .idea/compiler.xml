@@ -23,11 +23,11 @@
         <module name="Admin-Service" />
         <module name="shared-library" />
         <module name="Notification-Service" />
+        <module name="demo" />
         <module name="Patient-Aggregation-Service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="demo" target="21" />
       <module name="drWrite" target="21" />
       <module name="medrec" target="1.5" />
     </bytecodeTargetLevel>

@@ -1,10 +1,8 @@
-package medirec.demo.entity.doctor;
+package com.example.shared_library.entity.doctor;
+
 
 import jakarta.persistence.*;
 import lombok.*;
-import medirec.demo.entity.general.Address;
-
-import java.util.List;
 
 @Entity
 @Getter
