@@ -1,6 +1,8 @@
 package com.example.shared_library.enums;
 
 import lombok.Getter;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 public enum BloodGroup{
@@ -18,6 +20,22 @@ public enum BloodGroup{
 
     BloodGroup(String code) {
         this.code=code;
+    }
+
+    private static final Map<String,BloodGroup> lookUp = new HashMap<>();
+
+    static {
+        for(BloodGroup b : BloodGroup.values()){
+            lookUp.put(b.code,b);
+        }
+    }
+
+    public static BloodGroup fromCode(String code){
+        BloodGroup bloodGroup = lookUp.get(code);
+        if(bloodGroup==null){
+            throw new IllegalArgumentException("Invalid BloodGroup code: " + code);
+        }
+        return bloodGroup;
     }
 
 }

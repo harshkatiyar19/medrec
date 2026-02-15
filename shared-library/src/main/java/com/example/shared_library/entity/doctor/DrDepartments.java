@@ -25,14 +25,6 @@ public class DrDepartments {
     @Column(name="dr_department_id")
     private Long drDepartmentId;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "doctor_id",nullable = false,referencedColumnName = "doctor_id")
-    private Doctor doctor;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "department_id",nullable = false,referencedColumnName = "department_id")
-    private Departments department;
-
     @Column(name="designation")
     private String Designation;
 
@@ -45,6 +37,14 @@ public class DrDepartments {
     @Column(name="job_status")
     @Enumerated(value = EnumType.STRING)
     private JobStatus jobStatus;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name = "doctor_id",nullable = false,referencedColumnName = "doctor_id")
+    private Doctor doctor;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name = "department_id",nullable = false,referencedColumnName = "department_id")
+    private Departments department;
 
     @OneToMany(mappedBy = "drDepartments",fetch = FetchType.EAGER)
     private List<DrDepartmentsTimings> timings;

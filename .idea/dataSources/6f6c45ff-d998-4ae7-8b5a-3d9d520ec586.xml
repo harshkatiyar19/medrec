@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>753</IntrospectionStateNumber>
+      <IntrospectionStateNumber>829</IntrospectionStateNumber>
       <ServerVersion>17.8</ServerVersion>
-      <StartupTime>1771007241</StartupTime>
+      <StartupTime>1771146589</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -46,14 +46,14 @@ false Africa/Blantyre
 false Africa/Brazzaville
 false Africa/Bujumbura
 false Africa/Cairo
-false Africa/Casablanca
+true Africa/Casablanca
 false Africa/Ceuta
 false Africa/Conakry
 false Africa/Dakar
 false Africa/Dar_es_Salaam
 false Africa/Djibouti
 false Africa/Douala
-false Africa/El_Aaiun
+true Africa/El_Aaiun
 false Africa/Freetown
 false Africa/Gaborone
 false Africa/Harare
@@ -699,7 +699,7 @@ false posixrules
 13283||10|C|G
 13283||-9223372036854775808|U|G
 13283||10|U|G</Grants>
-      <IntrospectionStateNumber>753</IntrospectionStateNumber>
+      <IntrospectionStateNumber>832</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>medrec</OwnerName>
     </database>
@@ -4127,11 +4127,11 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>753</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>753</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>753</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>829</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>829</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>829</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2026-02-14.08:53:01</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-02-15.10:23:23</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4284,8 +4284,7 @@ false posixrules
     <table id="282" parent="265" name="address">
       <DetailsLevel>2</DetailsLevel>
       <ObjectId>16390</ObjectId>
-      <Outdated>1</Outdated>
-      <StateNumber>754</StateNumber>
+      <StateNumber>760</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>medrec</OwnerName>
     </table>
@@ -4341,8 +4340,7 @@ false posixrules
     <table id="290" parent="265" name="emergency_contacts">
       <DetailsLevel>2</DetailsLevel>
       <ObjectId>16566</ObjectId>
-      <Outdated>1</Outdated>
-      <StateNumber>800</StateNumber>
+      <StateNumber>804</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>medrec</OwnerName>
     </table>

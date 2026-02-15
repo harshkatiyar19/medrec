@@ -23,15 +23,15 @@ public class Qualifications {
             ,generator = "seqQualifications")
     @Column(name="qualification_id")
     //12-digit id
-    private long qualificationId;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="doctor_id",nullable = false,referencedColumnName = "doctor_id")
-    private Doctor doctor;
+    private Long qualificationId;
 
     @Column(name="qualification_name")
     private String name;
 
     @Column(name="proof")
     private String proof;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name="doctor_id",nullable = false,referencedColumnName = "doctor_id")
+    private Doctor doctor;
 }

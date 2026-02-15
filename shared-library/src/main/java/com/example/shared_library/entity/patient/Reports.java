@@ -17,8 +17,8 @@ public class Reports extends VisitBase {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator="seqReports")
-    @Column(name="id")
-    private long id;
+    @Column(name="report_id")
+    private Long ReportId;
 
     @Column(name="report_name",nullable = false)
     private String reportName;

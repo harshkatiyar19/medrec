@@ -42,12 +42,11 @@ public abstract class GeneralUserDetails {
     @Column(name="date_of_death")
     private LocalDate dod;
 
-    @Column(name="blood_group",nullable = false)
+    @Column(name="blood_group",nullable = false,length = 3)
     @Enumerated(EnumType.STRING)
     private BloodGroup bloodGroup;
 
-    @Column(name="gender",nullable = false)
-    @Enumerated(EnumType.STRING)
+    @Column(name="gender",nullable = false,length=1)
     private Gender gender;
 }
 

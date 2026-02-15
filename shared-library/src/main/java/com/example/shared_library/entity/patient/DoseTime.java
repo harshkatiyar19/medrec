@@ -24,14 +24,13 @@ public class DoseTime {
     @Column(name="dose_time_id")
     private Long doseTimeId;
 
+    @Column(name = "remarks",nullable = false)
+    private String remarks;
+
+    @Column(name = "timeslot",nullable = false,length = 1)
+    private TimeSlot timeSlot;
+
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name = "medications_id",referencedColumnName = "medications_id",nullable = false)
     private Medications medications;
-
-    @Column(name = "timeslot",nullable = false)
-    @Enumerated
-    private TimeSlot timeSlot;
-
-    @Column(name = "remarks",nullable = false)
-    private String remarks;
 }

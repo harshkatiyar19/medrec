@@ -31,18 +31,11 @@ public class OrganizationDetails {
     @Column(name="name",nullable = false)
     private String name ;
 
-    @Column(name="organization_type",nullable = false)
-    @Enumerated(EnumType.STRING)
-    private OrganizationType organizationType;
-
     @Column(name="license_number",nullable = false,unique = true)
     private String licenseNumber;
 
     @Column(name="registration_authority",nullable = false)
     private String registrationAuthority;
-
-    @Column(name="license_expiry_date",nullable = false)
-    private LocalDate licenseExpiryDate;
 
     @Column(name="phone_number",nullable = false,unique = true)
     private String phoneNumber;
@@ -53,12 +46,18 @@ public class OrganizationDetails {
     @Column(name="website_url",nullable = false)
     private String websiteUrl;
 
+    @Column(name="license_expiry_date",nullable = false)
+    private LocalDate licenseExpiryDate;
+
+    @Column(name="formed_at",nullable = false)
+    private LocalDate formedAt;
+
     @Column(name="operational_status",nullable = false)
     @Enumerated
     private OperationalStatus operationalStatus;
 
-    @Column(name="formed_at",nullable = false)
-    private LocalDate formedAt;
+    @Column(name="organization_type",nullable = false,length=1)
+    private OrganizationType organizationType;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name="address_id",nullable = false,referencedColumnName = "address_id")

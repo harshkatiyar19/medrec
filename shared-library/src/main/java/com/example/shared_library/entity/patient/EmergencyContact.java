@@ -20,7 +20,7 @@ public class EmergencyContact {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqEmergencyContacts")
     @Column(name = "emergency_contact_id")
-    private long emergencyId;
+    private Long emergencyId;
     @Column(name="phone_number",nullable = false)
     private String phoneNumber;
     @Column(name="email",nullable = false)

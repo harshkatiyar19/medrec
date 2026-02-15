@@ -18,6 +18,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class VisitBase {
+    @CreationTimestamp
+    @Column(name="date_created",nullable = false)
+    private LocalDateTime dateCreated;
+
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name = "patient_id",referencedColumnName = "id",nullable = false)
     private PatientUserDetails patientUserDetails;
@@ -30,7 +34,4 @@ public abstract class VisitBase {
     @JoinColumn(name="organization_id",referencedColumnName = "organization_id",nullable = false)
     private OrganizationDetails organizationDetails;
 
-    @CreationTimestamp
-    @Column(name="date_created",nullable = false)
-    private LocalDateTime dateCreated;
 }

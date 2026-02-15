@@ -26,9 +26,11 @@ public class Medications {
     @Column(name="medications_id")
     private Long medicationId;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "visit_id",referencedColumnName = "doctor_visit_id",nullable = false)
-    private DrVisits drVisits;
+    @Column(name="medication_name",nullable = false)
+    private String medicationName;
+
+    @Column(name="dose",nullable = false)
+    private String dose;
 
     @CreationTimestamp
     @Column(name="start_date",nullable = false)
@@ -37,11 +39,9 @@ public class Medications {
     @Column(name="end_date",nullable = false)
     private LocalDateTime endDate;
 
-    @Column(name="medication_name",nullable = false)
-    private String medicationName;
-
-    @Column(name="dose",nullable = false)
-    private String dose;
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name = "visit_id",referencedColumnName = "doctor_visit_id",nullable = false)
+    private DrVisits drVisits;
 
     @OneToMany(mappedBy = "medications",
             fetch = FetchType.LAZY)

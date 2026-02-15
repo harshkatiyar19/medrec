@@ -26,17 +26,21 @@ public class DrDepartmentsTimings {
     @Column(name="dr_department_id")
     private Long drDepartmentTimingsId;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name = "doctor_department_id",nullable = false,referencedColumnName = "dr_department_id")
-    private DrDepartments drDepartments;
-
-    @Column(name="day",nullable = false)
-    @Enumerated(value = EnumType.STRING)
-    private DayOfWeek dayOfWeek;
-
     @Column(name="start_time",nullable = false)
     private Time startTime;
 
     @Column(name="end_time",nullable = false)
     private Time endTime;
+
+    @Column(name="day",nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private DayOfWeek dayOfWeek;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
+    @JoinColumn(name = "doctor_department_id",nullable = false,referencedColumnName = "dr_department_id")
+    private DrDepartments drDepartments;
+
+
+
+
 }
