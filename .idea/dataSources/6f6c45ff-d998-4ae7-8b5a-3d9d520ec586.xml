@@ -3,9 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>829</IntrospectionStateNumber>
+      <IntrospectionStateNumber>835</IntrospectionStateNumber>
       <ServerVersion>17.8</ServerVersion>
-      <StartupTime>1771146589</StartupTime>
+      <StartupTime>1771492653</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -699,7 +699,7 @@ false posixrules
 13283||10|C|G
 13283||-9223372036854775808|U|G
 13283||10|U|G</Grants>
-      <IntrospectionStateNumber>832</IntrospectionStateNumber>
+      <IntrospectionStateNumber>835</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>medrec</OwnerName>
     </database>
@@ -4127,11 +4127,11 @@ false posixrules
       <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <LastIntrospectionL1Xid>829</LastIntrospectionL1Xid>
-      <LastIntrospectionL2Xid>829</LastIntrospectionL2Xid>
-      <LastIntrospectionL3Xid>829</LastIntrospectionL3Xid>
+      <LastIntrospectionL1Xid>835</LastIntrospectionL1Xid>
+      <LastIntrospectionL2Xid>835</LastIntrospectionL2Xid>
+      <LastIntrospectionL3Xid>835</LastIntrospectionL3Xid>
       <LastIntrospectionLevel>3</LastIntrospectionLevel>
-      <LastIntrospectionLocalTimestamp>2026-02-15.10:23:23</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2026-02-19.09:17:56</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>

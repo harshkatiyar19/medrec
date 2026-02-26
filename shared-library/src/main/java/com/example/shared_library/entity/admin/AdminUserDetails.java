@@ -3,8 +3,11 @@ package com.example.shared_library.entity.admin;
 import com.example.shared_library.entity.general.Address;
 import com.example.shared_library.entity.general.GeneralUserDetails;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-
+@Getter
+@Setter
 @Entity
 @Table(name="admin_details")
 @SequenceGenerator(
@@ -17,7 +20,7 @@ public class AdminUserDetails extends GeneralUserDetails {
     @GeneratedValue(strategy= GenerationType.SEQUENCE
             ,generator = "seqAdminDetails")
     @Column(name="admin_id")
-    //10-digit id
+    //12-digit id
     private Long adminId;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})

@@ -80,5 +80,6 @@
         <module>Admin-Service</module>
         <module>Doctor-Aggregation-Service</module>
         <module>Doctor-Read-Service</module>
+        <module>Auth-Service</module>
     </modules>
 </project>

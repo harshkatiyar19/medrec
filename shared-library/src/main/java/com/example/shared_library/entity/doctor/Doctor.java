@@ -23,7 +23,7 @@ public class Doctor extends GeneralUserDetails {
     @GeneratedValue(strategy= GenerationType.SEQUENCE
             ,generator = "seqDoctorDetails")
     @Column(name="doctor_id")
-    //12-digit id
+    //14-digit id
     private Long doctorId;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
