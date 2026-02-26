@@ -1,7 +1,8 @@
 package com.example.spring_security.configs;
 
 import com.example.spring_security.service.AdminSecurityService;
-import com.example.spring_security.service.SecurityUserService;
+import com.example.spring_security.service.DoctorSecurityService;
+import com.example.spring_security.service.PatientSecurityService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,11 +22,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final AdminSecurityService adminSecurityService;
-    private final SecurityUserService userDetailsService2;
+    private final PatientSecurityService patientSecurityService;
+    private final DoctorSecurityService doctorSecurityService;
 
-    public SecurityConfig( AdminSecurityService adminSecurityService, SecurityUserService userDetailsService2) {
+    public SecurityConfig(AdminSecurityService adminSecurityService, PatientSecurityService patientSecurityService, DoctorSecurityService doctorSecurityService) {
         this.adminSecurityService = adminSecurityService;
-        this.userDetailsService2 = userDetailsService2;
+        this.patientSecurityService = patientSecurityService;
+        this.doctorSecurityService = doctorSecurityService;
     }
 
 
@@ -42,11 +45,15 @@ public class SecurityConfig {
         DaoAuthenticationProvider adminProvider = new DaoAuthenticationProvider(adminSecurityService);
         adminProvider.setPasswordEncoder(passwordEncoder);
 
-        DaoAuthenticationProvider customerProvider = new DaoAuthenticationProvider(userDetailsService2);
-        customerProvider.setPasswordEncoder(passwordEncoder);
+        DaoAuthenticationProvider patientProvider = new DaoAuthenticationProvider(patientSecurityService);
+        patientProvider.setPasswordEncoder(passwordEncoder);
+
+        DaoAuthenticationProvider doctorProvider = new DaoAuthenticationProvider(doctorSecurityService);
+        doctorProvider.setPasswordEncoder(passwordEncoder);
 
         builder.authenticationProvider(adminProvider);
-        builder.authenticationProvider(customerProvider);
+        builder.authenticationProvider(patientProvider);
+        builder.authenticationProvider(doctorProvider);
 
         return builder.build();
     }

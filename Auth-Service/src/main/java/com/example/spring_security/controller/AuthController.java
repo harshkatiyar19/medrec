@@ -2,6 +2,9 @@ package com.example.spring_security.controller;
 
 import com.example.spring_security.dto.LoginRequest;
 import com.example.spring_security.dto.RegisterRequest;
+import com.example.spring_security.service.AdminSecurityService;
+import com.example.spring_security.service.DoctorSecurityService;
+import com.example.spring_security.service.PatientSecurityService;
 import com.example.spring_security.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +18,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final UserService userService;
+    private final AdminSecurityService adminSecurityService;
+    private final DoctorSecurityService doctorSecurityService;
+    private final PatientSecurityService patientSecurityService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthController(UserService userService,
-                          AuthenticationManager authenticationManager) {
-        this.userService = userService;
+    public AuthController(
+            AdminSecurityService adminSecurityService, DoctorSecurityService doctorSecurityService, PatientSecurityService patientSecurityService, AuthenticationManager authenticationManager) {
+        this.adminSecurityService = adminSecurityService;
+        this.doctorSecurityService = doctorSecurityService;
+        this.patientSecurityService = patientSecurityService;
         this.authenticationManager = authenticationManager;
     }
 
