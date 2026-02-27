@@ -1,5 +1,6 @@
 package com.example.shared_library.entity.general;
 
+import com.example.shared_library.enums.AddressType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -56,6 +57,9 @@ public class Address{
 
     @Column(name="map_url",nullable = false)
     private String mapUrl;
+
+    @Column(name="type",nullable = false)
+    private AddressType addressType;
 
 }
 

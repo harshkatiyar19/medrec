@@ -62,4 +62,13 @@ public class PatientUserDetails extends GeneralUserDetails {
     @OneToMany(mappedBy = "patientUserDetails",
             fetch = FetchType.LAZY)
     private List<DrVisits> drVisitsList;
+
+    @PrePersist
+    public void ensure16DigitId() {
+        if (patientId != null) {
+            // Pad left with zeros to 12 digits
+            String padded = String.format("%016d", patientId);
+            this.patientId = Long.valueOf(padded);
+        }
+    }
 }
