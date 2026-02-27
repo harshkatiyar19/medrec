@@ -3,12 +3,14 @@ package com.example.shared_library.entity.admin;
 import com.example.shared_library.entity.general.Address;
 import com.example.shared_library.entity.general.GeneralUserDetails;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="admin_details")
 @SequenceGenerator(
         name="seqAdminDetails",
@@ -30,4 +32,13 @@ public class AdminUserDetails extends GeneralUserDetails {
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
     @JoinColumn(name="current_address_id",nullable = false,referencedColumnName = "address_id")
     private Address currentAddress;
+
+    @PrePersist
+    public void ensure12DigitId() {
+        if (adminId != null) {
+            // Pad left with zeros to 12 digits
+            String padded = String.format("%012d", adminId);
+            this.adminId = Long.valueOf(padded);
+        }
+    }
 }

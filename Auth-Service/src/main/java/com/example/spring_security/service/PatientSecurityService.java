@@ -3,6 +3,7 @@ package com.example.spring_security.service;
 import com.example.patientWrite.repository.PatientUserDetailsRepository;
 import com.example.shared_library.entity.admin.AdminUserDetails;
 import com.example.shared_library.entity.patient.PatientUserDetails;
+import com.example.spring_security.dto.RegisterPatientDto;
 import com.example.spring_security.enums.LoginIdentifierType;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,29 +20,9 @@ public class PatientSecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String identifier) throws UsernameNotFoundException {
-        LoginIdentifierType type = LoginIdentifierType.from(identifier);
+        return null;
+    }
 
-        PatientUserDetails patient = switch (type) {
-
-            case EMAIL ->  patientRepo.findByEmail(identifier)
-                    .orElseThrow(() ->
-                            new UsernameNotFoundException("Email not found"));
-
-            case PHONE ->  patientRepo.findByPhoneNumber(identifier)
-                    .orElseThrow(() ->
-                            new UsernameNotFoundException("Phone number not found"));
-
-            case PATIENT_ID ->  patientRepo.findByPatientId(Long.valueOf(identifier))
-                    .orElseThrow(() ->
-                            new UsernameNotFoundException("Patient ID not found"));
-            default ->throw new UsernameNotFoundException("Invalid login identifier type");
-        };
-
-
-        return org.springframework.security.core.userdetails.User
-                .withUsername(String.valueOf(patient.getPatientId()))
-                .password(patient.getPassword())
-//                .roles(user.getRole())
-                .build();
+    public void register(RegisterPatientDto request) {
     }
 }

@@ -2,7 +2,7 @@ package com.example.spring_security.service;
 
 import com.example.admin.repository.AdminUserDetailsRepository;
 import com.example.shared_library.entity.admin.AdminUserDetails;
-import com.example.spring_security.dto.AdminRegisterDto;
+import com.example.spring_security.dto.RegisterAdminDto;
 import com.example.spring_security.enums.LoginIdentifierType;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -45,7 +45,11 @@ public class AdminSecurityService implements UserDetailsService {
                 .build();
     }
 
-    public void registerAdmin(AdminRegisterDto adminRegisterDto){
 
+    public String register(RegisterAdminDto request) {
+        AdminUserDetails adminUserDetails = AdminUserDetails.builder()
+                        .build();
+        adminRepo.save(adminUserDetails);
+        return null;
     }
 }
