@@ -32,19 +32,12 @@ public class PatientUserDetails extends GeneralUserDetails {
 
     @ManyToOne(cascade = {CascadeType.PERSIST,
             CascadeType.MERGE,
-            CascadeType.REFRESH})
-    @JoinColumn(name="permanent_address_id",
+            CascadeType.REFRESH
+    })
+    @JoinColumn(name="address_id",
             nullable = false,
             referencedColumnName = "address_id")
-    private Address permanentAddress;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.REFRESH})
-    @JoinColumn(name="current_address_id",
-            nullable = false,
-            referencedColumnName = "address_id")
-    private Address currentAddress;
+    private Address address;
 
 
     @OneToOne(cascade = {CascadeType.PERSIST,

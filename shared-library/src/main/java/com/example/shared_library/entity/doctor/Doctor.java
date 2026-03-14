@@ -26,13 +26,13 @@ public class Doctor extends GeneralUserDetails {
     //14-digit id
     private Long doctorId;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="permanent_address_id",nullable = false,referencedColumnName = "address_id")
-    private Address permanentAddress;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="current_address_id",nullable = false,referencedColumnName = "address_id")
-    private Address currentAddress;
+    @ManyToOne(cascade = {CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.REFRESH})
+    @JoinColumn(name="address_id",
+            nullable = false,
+            referencedColumnName = "address_id")
+    private Address address;
 
     @OneToMany(mappedBy = "doctor",fetch = FetchType.LAZY)
     private List<Qualifications> qualificationsList;

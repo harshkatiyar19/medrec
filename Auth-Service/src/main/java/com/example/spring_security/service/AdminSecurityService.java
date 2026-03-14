@@ -2,7 +2,6 @@ package com.example.spring_security.service;
 
 import com.example.admin.repository.AdminUserDetailsRepository;
 import com.example.shared_library.entity.admin.AdminUserDetails;
-import com.example.spring_security.dto.RegisterAdminDto;
 import com.example.spring_security.enums.LoginIdentifierType;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminSecurityService implements UserDetailsService {
     private final AdminUserDetailsRepository adminRepo;
+
 
     public AdminSecurityService(AdminUserDetailsRepository adminRepo) {
         this.adminRepo = adminRepo;
@@ -34,6 +34,7 @@ public class AdminSecurityService implements UserDetailsService {
             case ADMIN_ID ->  adminRepo.findByAdminId(Long.valueOf(identifier))
                     .orElseThrow(() ->
                             new UsernameNotFoundException("Admin ID not found"));
+
             default ->throw new UsernameNotFoundException("Invalid login identifier type");
         };
 
@@ -46,10 +47,5 @@ public class AdminSecurityService implements UserDetailsService {
     }
 
 
-    public String register(RegisterAdminDto request) {
-        AdminUserDetails adminUserDetails = AdminUserDetails.builder()
-                        .build();
-        adminRepo.save(adminUserDetails);
-        return null;
-    }
+
 }

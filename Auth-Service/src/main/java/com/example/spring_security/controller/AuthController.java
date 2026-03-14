@@ -1,12 +1,8 @@
 package com.example.spring_security.controller;
 
-import com.example.drWrite.dto.RegisterDoctorDto;
 import com.example.spring_security.dto.LoginRequest;
-import com.example.spring_security.dto.RegisterAdminDto;
-import com.example.spring_security.dto.RegisterPatientDto;
-import com.example.spring_security.service.AdminSecurityService;
-import com.example.spring_security.service.DoctorSecurityService;
-import com.example.spring_security.service.PatientSecurityService;
+import com.example.spring_security.dto.RegistrationDto;
+import com.example.spring_security.service.RegistrationService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,36 +15,31 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final AdminSecurityService adminSecurityService;
-    private final DoctorSecurityService doctorSecurityService;
-    private final PatientSecurityService patientSecurityService;
     private final AuthenticationManager authenticationManager;
+    private final RegistrationService registrationService;
 
-    public AuthController(
-            AdminSecurityService adminSecurityService, DoctorSecurityService doctorSecurityService, PatientSecurityService patientSecurityService, AuthenticationManager authenticationManager) {
-        this.adminSecurityService = adminSecurityService;
-        this.doctorSecurityService = doctorSecurityService;
-        this.patientSecurityService = patientSecurityService;
+    public AuthController(AuthenticationManager authenticationManager, RegistrationService registrationService) {
         this.authenticationManager = authenticationManager;
+        this.registrationService = registrationService;
     }
 
-    // ✅ Register new user
-    @PostMapping("/register/doctor")
-    public ResponseEntity<String> registerDoctor(@RequestBody RegisterDoctorDto request) {
-        doctorSecurityService.register(request);
-        return ResponseEntity.ok("Doctor registered successfully");
-    }
+//    // ✅ Register new user
+//    @PostMapping("/register/doctor")
+//    public ResponseEntity<String> registerDoctor(@RequestBody RegisterDoctorDto request) {
+//        doctorSecurityService.register(request);
+//        return ResponseEntity.ok("Doctor registered successfully");
+//    }
+//
+//    @PostMapping("/register/patient")
+//    public ResponseEntity<String> registerPatient(@RequestBody RegisterPatientDto request) {
+//        patientSecurityService.register(request);
+//        return ResponseEntity.ok("Patient registered successfully");
+//    }
 
-    @PostMapping("/register/patient")
-    public ResponseEntity<String> registerPatient(@RequestBody RegisterPatientDto request) {
-        patientSecurityService.register(request);
-        return ResponseEntity.ok("Patient registered successfully");
-    }
-
-    @PostMapping("/register/admin")
-    public ResponseEntity<String> registerAdmin(@RequestBody RegisterAdminDto request) {
-        adminSecurityService.register(request);
-        return ResponseEntity.ok("Admin registered successfully");
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@RequestBody RegistrationDto request) throws Exception {
+        registrationService.register(request);
+        return ResponseEntity.ok("User registered successfully");
     }
 
     // ✅ Login manually (for REST-based login)

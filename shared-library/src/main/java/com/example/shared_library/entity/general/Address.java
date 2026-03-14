@@ -58,7 +58,7 @@ public class Address{
     @Column(name="map_url",nullable = false)
     private String mapUrl;
 
-    @Column(name="type",nullable = false)
+    @Column(name="type",nullable = false,length = 1)
     private AddressType addressType;
 
 }

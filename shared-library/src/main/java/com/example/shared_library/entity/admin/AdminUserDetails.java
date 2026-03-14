@@ -26,12 +26,8 @@ public class AdminUserDetails extends GeneralUserDetails {
     private Long adminId;
 
     @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="permanent_address_id",nullable = false,referencedColumnName = "address_id")
-    private Address permanentAddress;
-
-    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
-    @JoinColumn(name="current_address_id",nullable = false,referencedColumnName = "address_id")
-    private Address currentAddress;
+    @JoinColumn(name="address_id",nullable = false,referencedColumnName = "address_id")
+    private Address address;
 
     @PrePersist
     public void ensure12DigitId() {

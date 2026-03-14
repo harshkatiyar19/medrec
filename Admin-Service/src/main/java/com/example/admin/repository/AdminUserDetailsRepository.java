@@ -12,4 +12,6 @@ public interface AdminUserDetailsRepository extends JpaRepository<AdminUserDetai
     Optional<AdminUserDetails> findByEmail(String email);
 
     Optional<AdminUserDetails> findByPhoneNumber(String phoneNumber);
+
+    boolean existsByEmail(String email);
 }
